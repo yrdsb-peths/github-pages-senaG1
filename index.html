@@ -1,19 +1,199 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Dark Mode Demo</title>
-    <link rel="stylesheet" href="/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WanderJoy - Your Travel Buddy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    body {
+      background: #faf7f5;
+      color: #3d3d3d;
+    }
+
+    header {
+      background: #fce4ec;
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 5px solid #cce3d0;
+    }
+
+    header h1 {
+      color: #6a8d73;
+      font-size: 2.5rem;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      color: #a1576a;
+      margin-top: 0.5rem;
+    }
+
+    svg {
+      display: block;
+      margin: 0;
+    }
+
+    main {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .features {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .feature-box {
+      background: #e8f5e9;
+      border-radius: 20px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .feature-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(106, 141, 115, 0.2);
+    }
+
+    .feature-box h2 {
+      color: #6a8d73;
+      font-size: 1.5rem;
+      position: relative;
+    }
+
+    .feature-box:nth-child(1) h2::before {
+      content: "🌸 ";
+    }
+
+    .feature-box:nth-child(2) h2::before {
+      content: "🗺️ ";
+    }
+
+    .feature-box:nth-child(3) h2::before {
+      content: "💼 ";
+    }
+
+    .feature-box p {
+      color: #555;
+      margin-top: 0.5rem;
+    }
+
+    .surprise-btn {
+      margin-top: 3rem;
+      background: #f8bbd0;
+      color: #6a8d73;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .surprise-btn:hover {
+      background: #f48fb1;
+    }
+
+    .destination-output {
+      margin-top: 1.5rem;
+      font-size: 1.2rem;
+      color: #a1576a;
+    }
+
+    footer {
+      background: #fce4ec;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .features {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .feature-box {
+        width: 30%;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <h1>Hello World! I am Sena</h1>
-    <img src="./assets/images/logo.png" alt="Logo">
-</body>
+  <header>
+    <h1>WanderJoy</h1>
+    <p class="tagline">Plan. Explore. Smile. Your trip just got cuter.</p>
+  </header>
 
-<body>
-    <h1>How are you doing</h1>
-    <img src="/assets/images/logo.png" alt="Logo">
+  <!-- Wavy SVG divider -->
+  <svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#cce3d0" fill-opacity="1"
+      d="M0,0 C480,100 960,0 1440,100 L1440,0 L0,0 Z"></path>
+  </svg>
+
+  <main>
+    <section class="features">
+      <div class="feature-box">
+        <h2>Smart Planning</h2>
+        <p>Let us handle your itinerary—stress-free, fun-packed days await!</p>
+      </div>
+
+      <div class="feature-box">
+        <h2>Inspo Galore</h2>
+        <p>Get curated destination ideas and hidden gems to explore!</p>
+      </div>
+
+      <div class="feature-box">
+        <h2>Cute & Convenient</h2>
+        <p>Adorable design meets powerful features to make your trips better.</p>
+      </div>
+    </section>
+
+    <!-- Surprise Me button -->
+    <button class="surprise-btn" onclick="showRandomDestination()">🎁 Surprise Me!</button>
+    <p class="destination-output" id="destination-output"></p>
+  </main>
+
+  <footer>
+    &copy; 2025 WanderJoy. Made with 💖 for dreamers and explorers.
+  </footer>
+
+  <script>
+    const destinations = [
+      "Kyoto, Japan 🇯🇵",
+      "Reykjavík, Iceland 🇮🇸",
+      "Santorini, Greece 🇬🇷",
+      "Banff, Canada 🇨🇦",
+      "Barcelona, Spain 🇪🇸",
+      "Queenstown, New Zealand 🇳🇿",
+      "Seoul, South Korea 🇰🇷",
+      "Marrakech, Morocco 🇲🇦",
+      "Prague, Czech Republic 🇨🇿",
+      "Hobbiton, New Zealand 🧙‍♂️"
+    ];
+
+    function showRandomDestination() {
+      const output = document.getElementById("destination-output");
+      const random = destinations[Math.floor(Math.random() * destinations.length)];
+      output.textContent = `How about... ${random}? ✈️`;
+    }
+  </script>
 </body>
 
 </html>
